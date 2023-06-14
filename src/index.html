@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/notiflix@2.7.0/dist/notiflix-2.7.0.min.css"
+    />
+
+    <title>Homework 10</title>
   </head>
   <body>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
+    <select class="breed-select classItems"></select>
+
+    <div class="loader-info">
+      <span class="loader"></span>
+      <p class="loader-text">Loading data, please wait...</p>
+    </div>
+    <p class="error">Oops! Something went wrong! Try reloading the page!</p>
+
+    <div class="cat-info"><p>Hello!Please,choose the cat</p></div>
+
+    <script src="./index.js" type="module"></script>
   </body>
 </html>
