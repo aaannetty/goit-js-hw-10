@@ -28,6 +28,7 @@ img {
 .loader-info {
   display: flex;
 }
+
 .loader {
   display: inline-block;
   transform: rotateZ(45deg);
@@ -166,7 +167,7 @@ body {
 }
 
 .cat-info p {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Great Vibes';
 }
 .classItems {
   font-family: 'Great Vibes', cursive;
