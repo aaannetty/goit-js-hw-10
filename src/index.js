@@ -61,33 +61,24 @@ function onChangeSelect() {
     .then(breedData => {
       if (breedData) {
         console.log(breedData);
-        let breedImg = document.createElement('img');
-        breedImg.src = breedData.url;
-        breedImg.style.maxWidth = '560px';
-        let breedName = document.createElement('h2');
-        breedName.textContent = breedData.breeds[0].name;
-        let breedDescr = document.createElement('p');
-        breedDescr.textContent = breedData.breeds[0].description;
-        let breedTemper = document.createElement('p');
-        breedTemper.innerHTML =
-          '<b>Temperament 🐱: </b>' + breedData.breeds[0].temperament;
-        let breedOrigin = document.createElement('p');
-        breedOrigin.innerHTML =
-          '<b>Origin 🌎: </b>' + breedData.breeds[0].origin;
-        let breedWeight = document.createElement('p');
-        breedWeight.innerHTML =
-          '<b>Weight 🐈: </b>' + breedData.breeds[0].weight.imperial;
-        refs.infoArea.innerHTML = '';
-        refs.infoArea.append(
-          breedImg,
-          breedName,
-          breedDescr,
-          breedTemper,
-          breedOrigin,
-          breedWeight
-        );
+        const { url, breeds } = breedData;
+        const { name, description, temperament, origin, weight } = breeds[0];
+
+        const markup = `
+          <div id="infoArea">
+            <img class="breed-img" src="${url}" style="max-width: 560px;">
+            <h2 class="breed-name">${name}</h2>
+            <p class="breed-description">${description}</p>
+            <p class="breed-temperament"><b>Temperament 🐱: </b>${temperament}</p>
+            <p class="breed-origin"><b>Origin 🌎: </b>${origin}</p>
+            <p class="breed-weight"><b>Weight 🐈: </b>${weight.imperial}</p>
+          </div>
+        `;
+
+        refs.infoArea.innerHTML = markup;
       }
     })
+
     .catch(() => {
       hideLoadingSpinner();
       refs.loaderText.classList.add('visually-hidden');
