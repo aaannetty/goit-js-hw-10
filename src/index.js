@@ -34,11 +34,14 @@ fetchBreeds()
         dropdown.classList.add('custom-colors');
       },
     });
+
+    refs.infoArea.classList.remove('visually-hidden');
   })
   .catch(error => {
     hideLoadingSpinner();
     refs.errorMsg.classList.remove('visually-hidden');
     console.error('Error:', error.name, error.message);
+    refs.loaderText.classList.add('visually-hidden');
   });
 
 refs.selector.addEventListener('change', onChangeSelect);
@@ -48,6 +51,10 @@ function onChangeSelect() {
     return;
   }
   const breedId = refs.selector.value;
+
+  refs.infoArea.classList.add('visually-hidden');
+  refs.loaderText.classList.remove('visually-hidden');
+  refs.loadingMsg.classList.remove('visually-hidden');
 
   fetchCatByBreed(breedId)
     .then(data => {
@@ -77,11 +84,13 @@ function onChangeSelect() {
 
         refs.infoArea.innerHTML = markup;
       }
+      refs.infoArea.classList.remove('visually-hidden');
     })
 
     .catch(() => {
       hideLoadingSpinner();
       refs.loaderText.classList.add('visually-hidden');
+      refs.errorMsg.classList.remove('visually-hidden');
       Notiflix.Notify.failure(
         'Oops! Something went wrong! Try reloading the page!'
       );

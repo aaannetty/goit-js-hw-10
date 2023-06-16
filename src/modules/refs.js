@@ -4,4 +4,5 @@ export const refs = {
   errorMsg: document.querySelector('.error'),
   infoArea: document.querySelector('.cat-info'),
   loaderText: document.querySelector('.loader-text'),
+  hello: document.querySelector('hello'),
 };
